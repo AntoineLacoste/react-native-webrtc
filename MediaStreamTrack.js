@@ -93,9 +93,18 @@ class MediaStreamTrack extends EventTarget(MEDIA_STREAM_TRACK_EVENTS) {
   applyConstraints() {
     throw new Error('Not implemented.');
   }
-
+  
   clone() {
-    throw new Error('Not implemented.');
+    return new MediaStreamTrack({
+      id: this.id,
+      kind: this.kind,
+      label: this.label,
+      muted: this.muted,
+      remote: this.remote,
+      constraints: this._constraints,
+      enabled: this._enabled,
+      settings: this._settings
+    });
   }
 
   getCapabilities() {
